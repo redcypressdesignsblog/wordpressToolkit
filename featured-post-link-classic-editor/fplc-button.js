@@ -1,6 +1,12 @@
 ( function () {
 	'use strict';
 
+	if ( typeof tinymce === 'undefined' || window.fplcButtonRegistered ) {
+		return;
+	}
+
+	window.fplcButtonRegistered = true;
+
 	tinymce.PluginManager.add( 'fplc_button', function ( editor ) {
 		editor.addButton( 'fplc_button', {
 			title: 'Insert Featured Post Link',
