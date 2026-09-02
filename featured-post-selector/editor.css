@@ -1,0 +1,12 @@
+.rcd-featured-post-selector .components-placeholder {
+	min-height: 180px;
+}
+
+.rcd-featured-post-selector .components-combobox-control {
+	width: 100%;
+	max-width: 620px;
+}
+
+.rcd-featured-post-selector .components-spinner {
+	margin-top: 12px;
+}
