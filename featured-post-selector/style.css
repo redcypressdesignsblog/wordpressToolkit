@@ -1,0 +1,41 @@
+.featured-post-excerpt-link {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	text-decoration: none;
+}
+
+.featured-post-excerpt-image {
+	flex: 0 0 auto;
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+}
+
+.featured-post-excerpt-content {
+	min-width: 0;
+}
+
+.featured-post-excerpt-title {
+	display: block;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.featured-post-excerpt-text {
+	margin: .5rem 0 0;
+	color: inherit;
+	line-height: 1.55;
+}
+
+@media (max-width: 600px) {
+	.featured-post-excerpt-link {
+		flex-direction: column;
+	}
+
+	.featured-post-excerpt-image {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+	}
+}
