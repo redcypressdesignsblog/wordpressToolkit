@@ -92,7 +92,14 @@ function fplc_get_post_list() {
  * Register the TinyMCE toolbar button for Classic Editor users.
  */
 function fplc_add_mce_button() {
-	if ( ! current_user_can( 'edit_posts' ) || 'true' !== get_user_option( 'rich_editing' ) ) {
+	$screen = get_current_screen();
+
+	if (
+		! $screen
+		|| ! in_array( $screen->base, array( 'post', 'post-new' ), true )
+		|| ! current_user_can( 'edit_posts' )
+		|| 'true' !== get_user_option( 'rich_editing' )
+	) {
 		return;
 	}
 
