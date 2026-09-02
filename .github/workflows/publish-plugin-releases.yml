@@ -1,0 +1,75 @@
+name: Publish plugin releases
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-plugin-releases.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build installable plugin ZIPs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p dist/build
+
+          cp -R featured-post-selector dist/build/red-cypress-featured-post-selector-v1.2.0
+          (
+            cd dist/build
+            zip -qr ../redcypress-featured-post-selector-v1.2.0.zip red-cypress-featured-post-selector-v1.2.0
+          )
+
+          cp -R featured-post-link-classic-editor dist/build/featured-post-link-classic-editor
+          (
+            cd dist/build
+            zip -qr ../featured-post-link-classic-editor-v1.0.0.zip featured-post-link-classic-editor
+          )
+
+      - name: Publish Featured Post Selector 1.2.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="featured-post-selector-v1.2.0"
+          asset="dist/redcypress-featured-post-selector-v1.2.0.zip"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$asset" --clobber
+          else
+            gh release create "$tag" "$asset" \
+              --target "$GITHUB_SHA" \
+              --title "Featured Post Selector 1.2.0" \
+              --notes "Two Gutenberg blocks for selecting a published post. The original Featured Post Selector block uses the companion [featured_post_link] shortcode; the Featured Post with Excerpt block works independently."
+          fi
+
+      - name: Publish Featured Post Link Classic Editor 1.0.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="featured-post-link-classic-editor-v1.0.0"
+          asset="dist/featured-post-link-classic-editor-v1.0.0.zip"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$asset" --clobber
+          else
+            gh release create "$tag" "$asset" \
+              --target "$GITHUB_SHA" \
+              --title "Featured Post Link (Classic Editor) 1.0.0" \
+              --notes "Registers the [featured_post_link] shortcode and adds a published-post selector button to the WordPress Classic Editor."
+          fi
