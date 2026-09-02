@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Red Cypress Featured Post Selector
+ * Plugin Name: Redcypress Featured Post Selector
  * Description: Adds Gutenberg post-selector blocks for featured post links, with or without an excerpt.
  * Version: 1.2.0
- * Author: Red Cypress Designs
+ * Author: Redcypress Designs
  * License: GPL-2.0-or-later
  */
 
@@ -89,7 +89,7 @@ function rcd_register_featured_post_selector_blocks() {
 add_action( 'init', 'rcd_register_featured_post_selector_blocks' );
 
 /**
- * Render the original title-only block using the site's existing shortcode.
+ * Render the original selector block using the companion shortcode.
  */
 function rcd_render_featured_post_selector_block( $attributes ) {
 	$post_id = isset( $attributes['postId'] ) ? absint( $attributes['postId'] ) : 0;
@@ -100,7 +100,7 @@ function rcd_render_featured_post_selector_block( $attributes ) {
 
 	if ( ! shortcode_exists( 'featured_post_link' ) ) {
 		return current_user_can( 'edit_posts' )
-			? '<p><strong>Red Cypress Featured Post Selector:</strong> The <code>[featured_post_link]</code> shortcode is not registered.</p>'
+			? '<p><strong>Redcypress Featured Post Selector:</strong> The <code>[featured_post_link]</code> shortcode is not registered.</p>'
 			: '';
 	}
 
