@@ -4,6 +4,17 @@ A collection of small WordPress tools, shortcodes, and custom helpers created fo
 
 These tools started as practical fixes for things I wanted my own site to do more easily. Some are simple shortcodes; others add small workflow improvements inside WordPress.
 
+## Included tools
+
+### [Featured Post Selector](featured-post-selector/)
+
+Two dynamic Gutenberg blocks for selecting a published post:
+
+- **Featured Post Selector** — displays the selected post's featured image and title through the site's existing `[featured_post_link]` shortcode.
+- **Featured Post with Excerpt** — displays the selected post's featured image, title, and either its manual excerpt or a generated 55-word excerpt.
+
+Current version: **1.2.0**
+
 ## What belongs here
 
 This repository is for small, reusable WordPress tools such as:
@@ -17,21 +28,21 @@ Client-specific projects and site-specific credentials do not belong in this rep
 
 ## Repository structure
 
-Each tool lives in its own folder and will include:
+Each tool lives in its own folder and includes:
 
 - The plugin source
 - Installation instructions
-- Shortcode usage and available attributes
+- Shortcode or block usage
 - Notes about styling or theme-specific behavior
 
 ## Installation
 
 Installation details are documented inside each tool's folder. In general:
 
-1. Download the tool's folder or packaged ZIP file.
+1. Download the tool's folder or a packaged ZIP file.
 2. Upload it through **WordPress Admin → Plugins → Add New Plugin → Upload Plugin**.
 3. Activate the plugin.
-4. Add the documented shortcode where you want the output to appear.
+4. Add the documented block or shortcode where you want the output to appear.
 
 ## Important notes
 
@@ -44,6 +55,6 @@ Before installing custom code:
 - Review the source for compatibility with your setup.
 - Never place API keys, passwords, or private site credentials in a public repository.
 
-## License
+## Licensing
 
-No license has been selected yet. Until one is added, the code remains copyrighted and is not automatically licensed for reuse or redistribution.
+Check each tool's source header for its license. A repository-wide license has not been selected.
