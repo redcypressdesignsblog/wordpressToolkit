@@ -6,11 +6,17 @@ These tools started as practical fixes for things I wanted my own site to do mor
 
 ## Included tools
 
+### [Featured Post Link (Classic Editor)](featured-post-link-classic-editor/)
+
+Registers the `[featured_post_link]` shortcode, which displays a published post's featured image, linked title, and excerpt. It also adds a post-selection button to the Classic Editor.
+
+Current version: **1.0.0**
+
 ### [Featured Post Selector](featured-post-selector/)
 
 Two dynamic Gutenberg blocks for selecting a published post:
 
-- **Featured Post Selector** — displays the selected post's featured image and title through the site's existing `[featured_post_link]` shortcode.
+- **Featured Post Selector** — renders the selected post through the companion `[featured_post_link]` shortcode.
 - **Featured Post with Excerpt** — displays the selected post's featured image, title, and either its manual excerpt or a generated 55-word excerpt.
 
 Current version: **1.2.0**
