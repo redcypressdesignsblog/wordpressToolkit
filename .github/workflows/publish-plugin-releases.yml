@@ -38,6 +38,12 @@ jobs:
             zip -qr ../featured-post-link-classic-editor-v1.0.0.zip featured-post-link-classic-editor
           )
 
+          cp -R recent-posts dist/build/redcypress-recent-posts
+          (
+            cd dist/build
+            zip -qr ../redcypress-recent-posts-v1.0.0.zip redcypress-recent-posts
+          )
+
       - name: Publish Featured Post Selector 1.2.0
         env:
           GH_TOKEN: ${{ github.token }}
@@ -72,4 +78,22 @@ jobs:
               --target "$GITHUB_SHA" \
               --title "Featured Post Link (Classic Editor) 1.0.0" \
               --notes "Registers the [featured_post_link] shortcode and adds a published-post selector button to the WordPress Classic Editor."
+          fi
+
+      - name: Publish Recent Posts 1.0.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="recent-posts-v1.0.0"
+          asset="dist/redcypress-recent-posts-v1.0.0.zip"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$asset" --clobber
+          else
+            gh release create "$tag" "$asset" \
+              --target "$GITHUB_SHA" \
+              --title "Redcypress Recent Posts 1.0.0" \
+              --notes "Adds the [recent_posts] shortcode with category, tag, count, and custom CSS class options. Posts are ordered by their most recent update."
           fi
