@@ -23,6 +23,13 @@ Two dynamic Gutenberg blocks for selecting a published post:
 Current version: **1.2.0**  
 [Download the installable ZIP](https://github.com/redcypressdesignsblog/wordpressToolkit/releases/download/featured-post-selector-v1.2.0/redcypress-featured-post-selector-v1.2.0.zip)
 
+### [Recent Posts](recent-posts/)
+
+Registers the `[recent_posts]` shortcode for displaying recently modified posts. Results can be filtered by category or tag, limited by count, and given custom CSS classes.
+
+Current version: **1.0.0**  
+[Download the installable ZIP](https://github.com/redcypressdesignsblog/wordpressToolkit/releases/download/recent-posts-v1.0.0/redcypress-recent-posts-v1.0.0.zip)
+
 ## What belongs here
 
 This repository is for small, reusable WordPress tools such as:
